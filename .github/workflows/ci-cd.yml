@@ -29,7 +29,11 @@ jobs:
               username: ${{ secrets.AZURE_VM_USER }}
               key: ${{ secrets.AZURE_VM_SSH_KEY }}
               script: |
-                cd ~/Task-app-azure
+                echo "Current directory: $(pwd)"
+                echo "Home directory: $HOME"
+                echo "Contents:"
+                ls -la $HOME
+                cd $HOME/Task-app-azure
                 export MONGO_URI=${{ secrets.MONGO_URI }}
                 sudo docker-compose down || true
                 sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
