@@ -15,12 +15,12 @@ jobs:
           - name: build backend
             run: |
                 cd backend
-                docker build -t backend
+                docker build -t backend .
 
           - name: build frontend
             run: |
                 cd frontend
-                docker build -t frontend
+                docker build -t frontend .
 
           - name: deploy to azure vm
             uses: appleboy/ssh-action@v0.1.7
