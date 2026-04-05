@@ -30,5 +30,8 @@ jobs:
               key: ${{ secrets.AZURE_VM_SSH_KEY }}
               script: |
                 cd /home/azureuser/task-app
+                docker-compose down || true
+                docker rmi nginx:latest || true
+                docker system prune -f
                 docker-compose pull
                 docker-compose up -d --build
