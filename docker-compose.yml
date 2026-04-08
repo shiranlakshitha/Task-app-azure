@@ -7,8 +7,9 @@ services:
     backend:
         build: ./backend
         container_name: task-app-backend
-        env_file:
-            - .env
+        environment:
+            - MONGO_URI=${MONGO_URI}
+            - PORT=${PORT:-5000}
         depends_on:
             - mongo
         
