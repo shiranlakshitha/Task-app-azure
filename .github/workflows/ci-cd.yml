@@ -30,7 +30,7 @@ jobs:
               key: ${{ secrets.AZURE_VM_SSH_KEY }}
               script: |
                 cd ~/Task-app-azure
-                export MONGO_URI=${{ secrets.MONGO_URI }}
+                echo "MONGO_URI=${{ secrets.MONGO_URI }}" > .env
                 sudo docker-compose down || true
                 sudo docker stop $(sudo docker ps -q) 2>/dev/null || true
                 sudo docker rmi nginx:latest 2>/dev/null || true

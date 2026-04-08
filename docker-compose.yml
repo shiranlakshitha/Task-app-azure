@@ -7,8 +7,8 @@ services:
     backend:
         build: ./backend
         container_name: task-app-backend
-        environment:
-            - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017/taskapp}
+        env_file:
+            - .env
         depends_on:
             - mongo
         
